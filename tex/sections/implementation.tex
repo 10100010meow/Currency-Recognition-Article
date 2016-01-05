@@ -54,9 +54,9 @@ The system was implemented to recognize any type of banknotes. The Euro currency
 
 To improve the robustness of the system, 3 levels of detail for each banknote are provided (with images having width of 256, 512 and 1024 respectively).
 
-For an ideal banknote recognition result, the image resolution of both the reference and the target images should be the same. But converting a high resolution banknote database to the image banknotes resolution has a considerable overhead in the system performance, and as such, to allow the system to be more efficient and able to run in real time, a compromise between precision and computation time was achieved by precomputing the reference images in 3 different scales. At run time, the appropriate level of detail is selected according to the resolution of the target image.
+For an ideal banknote recognition result, the image resolution of both the reference and the target images should be the same. But converting a high resolution banknote database to the image banknotes resolution has a considerable processing overhead, and as such, to allow the system to be more efficient and able to run in real time, a compromise between precision and computation time was achieved by precomputing the reference images in 3 different scales. At run time, the appropriate level of detail is selected according to the resolution of the target image.
 
-The reason for several levels of details is related to the fact that the geometry of the banknotes changes drastically from a very low resolution to a high resolution banknote image. As a result, the computed keypoints and their associated descriptors will be considerably different and the recognition of the banknotes will likely fail. This can be clearly seen in \cref{fig:banknote-500-front-resolution-difference}. This approach mitigates this problem by selecting the most similar database image resolution in relation to the banknotes in the image being analyzed.
+The reason for several levels of details is related to the fact that the geometry of the banknotes changes drastically from a low resolution to a high resolution banknote image. As a result, the computed keypoints and their associated descriptors will be considerably different and the recognition of the banknotes will likely fail. This can be clearly seen in \cref{fig:banknote-500-front-resolution-difference}. This approach mitigates this problem by selecting the most similar database image resolution in relation to the banknotes in the image being analyzed.
 
 \begin{figure}[H]
 	\centering
@@ -123,7 +123,7 @@ A final step removes any result that has a contour with a circularity or aspect 
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.4\textwidth]{notes-masks/currency-db-shapes}
+	\includegraphics[width=0.61\textwidth]{notes-masks/currency-db-shapes}
 	\caption{Database of valid instances of banknote shapes}
 	\label{fig:currency-db-shapes}
 \end{figure}
