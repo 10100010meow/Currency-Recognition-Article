@@ -1,13 +1,41 @@
 \section{Results}\label{sec:results}
 
-The system was tested with 82 images that contained banknotes in the most common conditions, such as different perspective views, cluttered environments, multiple banknotes per image and partially occluded banknotes. With the proper configuration (specified in [28]), the system successfully recognize all test images. Below are some of the representative results.
+The system was tested with 82 images that contained banknotes in the most common conditions, such as different perspective views, cluttered environments, multiple banknotes per image and partially occluded banknotes. With the proper configuration, the system successfully recognize all test images. In \cref{fig:recognition-ideal-perspective-view,fig:recognition-perspective-distortion,fig:recognition-cluttered-environments,fig:recognition-partially-occluded-banknotes,fig:recognition-overlapping-banknotes} are shown some representative results of the implemented banknote recognition system.
 
-Fig. 4. Detection of a banknote in an ideal perspective view.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.51\linewidth]{notes-recognition/5__(5).jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_lowQualityImageDB_globalMatch__inliersMatches__0}
+	\caption{Detection of a banknote in an ideal perspective view}
+	\label{fig:recognition-ideal-perspective-view}
+\end{figure}
 
-Fig. 5. Detection of a banknote with perspective distortion.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.51\linewidth]{notes-recognition/5__(6).jpg___SURF-Detector_SURF-Extractor_BF-Matcher_lowQualityImageDB_globalMatch__inliersMatches__0}
+	\caption{Detection of a banknote with perspective distortion}
+	\label{fig:recognition-perspective-distortion}
+\end{figure}
 
-Fig. 6. Detection of a banknote in cluttered environments.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.51\linewidth]{notes-recognition/10__(9).jpeg___SIFT-Detector_SIFT-Extractor_BF-Matcher_lowQualityImageDB_globalMatch__inliersMatches__0}
+	\caption{Detection of a banknote in cluttered environments}
+	\label{fig:recognition-cluttered-environments}
+\end{figure}
 
-Fig. 7. Detection of partially occluded banknotes.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.533\linewidth]{notes-recognition/500.jpg___GFTT-Detector_SIFT-Extractor_BF-Matcher_dynamicQualityImageDB_globalMatch__inliersMatches__0}
+	\includegraphics[width=0.533\linewidth]{notes-recognition/50__(13).jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_mediumQualityImageDB_globalMatch__inliersMatches__0}
+	\caption{Detection of partially occluded banknotes}
+	\label{fig:recognition-partially-occluded-banknotes}
+\end{figure}
 
-Fig. 8. Detection of overlapping banknotes.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.533\linewidth]{notes-recognition/10-20-50.jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_dynamicQualityImageDB_globalMatch__inliersMatches__1}
+	\includegraphics[width=0.533\linewidth]{notes-recognition/10-20-50.jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_dynamicQualityImageDB_globalMatch__inliersMatches__2}
+	\includegraphics[width=0.533\linewidth]{notes-recognition/10-20-50.jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_dynamicQualityImageDB_globalMatch__inliersMatches__0}
+	\caption{Detection of overlapping banknotes}
+	\label{fig:recognition-overlapping-banknotes}
+\end{figure}
