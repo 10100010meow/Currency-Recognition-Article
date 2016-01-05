@@ -25,9 +25,13 @@
 \Crefname{figure}{Figure}{Figures}
 \usepackage[nonumberlist,acronym,nomain]{glossaries}
 \usepackage[gen]{eurosym}
+\usepackage{etoolbox}
 \glsdisablehyper
 \makeglossaries
 
 \makeatletter
 \g@addto@macro{\UrlBreaks}{\UrlOrds}
 \makeatother
+
+\newtoggle{ebib}
+\togglefalse{ebib}
