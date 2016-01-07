@@ -7,11 +7,10 @@ echo "##########################################################################
 
 
 rm -rf ./build
-mkdir -p build/references
-mkdir -p build/styles
+mkdir build
 
-ln -s "`pwd`/references/references.bib" "`pwd`/build/references/references.bib"
-ln -s "`pwd`/styles/splncs03.bst" "`pwd`/build/styles/splncs03.bst"
+ln -s "`pwd`/references.bib" "`pwd`/build/references.bib"
+ln -s "`pwd`/splncs03.bst" "`pwd`/build/splncs03.bst"
 
 
 echo "\n\n"
