@@ -1,4 +1,4 @@
-\documentclass{llncs}
+\documentclass[10pt,final,conference,compsocconf,letterpaper,oneside,twocolumn]{IEEEtran}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -16,22 +16,32 @@
 \usepackage{url}
 \usepackage{footnote}
 \usepackage{footmisc}
-\usepackage[hidelinks]{hyperref} %[draft,hidelinks]
+\usepackage[draft]{hyperref} %[draft,hidelinks]
 \usepackage[all]{hypcap}
 \usepackage[capitalise,noabbrev,nameinlink]{cleveref}
-\crefname{section}{Sect.}{Sect.}
-\Crefname{section}{Section}{Sections}
-\crefname{figure}{Fig.}{Fig.}
-\Crefname{figure}{Figure}{Figures}
 \usepackage[nonumberlist,acronym,nomain,nowarn]{glossaries}
 \usepackage[gen]{eurosym}
 \usepackage{etoolbox}
 \glsdisablehyper
-\makeglossaries
 
 \makeatletter
 \g@addto@macro{\UrlBreaks}{\UrlOrds}
 \makeatother
+
+
+\ifCLASSOPTIONcompsoc
+\usepackage[nocompress]{cite}
+\else
+\usepackage{cite}
+\fi
+
+\ifCLASSOPTIONcompsoc
+\usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+\else
+\usepackage[caption=false,font=footnotesize]{subfig}
+\fi
+
+\makeglossaries
 
 \newtoggle{ebib}
 \togglefalse{ebib} %toogle to true for extended bibliography

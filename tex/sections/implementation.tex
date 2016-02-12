@@ -1,10 +1,10 @@
 \section{Implementation}\label{sec:implementation}
 
-The following sections present the main processing stages of the implemented banknote recognition system (overview shown in \cref{fig:system-overview}). The C++ source code along with the complete results are available at \footnote{\url{https://github.com/carlosmccosta/Currency-Recognition}}. To speed up development, the \gls{opencv} library was used.
+The following sections present the main processing stages of the implemented banknote recognition system (overview shown in \cref{fig:system-overview}). The C++ source code along with the complete results are available at \footnote{\url{https://github.com/user/repository}}. To speed up development, the \gls{opencv} library was used.
 
 \begin{figure}[!ht]
 	\centering
-	\includegraphics[width=.52\textwidth]{system-overview}
+	\includegraphics[width=.499\textwidth]{system-overview}
 	\caption{Overview of the main processing stages of the banknote recognition system}
 	\label{fig:system-overview}
 \end{figure}
@@ -28,14 +28,14 @@ In order for the system to be able to recognize the target banknotes, a database
 
 \subsection{Preprocessing}
 
-To improve the detection of good features and ensure that the system has robust recognition even when the images have considerable noise, a preprocessing step is applied. In a first phase, most of the noise is removed using a bilateral filter\iftoggle{ebib}{ \cite{Tomasi1998}}. This filter was chosen because it preserves the edges of image blobs, which are very valuable structures in the detection of feature points. After the noise is reduced, a \gls{clahe} \iftoggle{ebib}{\cite{Heckbert1994}} is applied to increase the contrast. This can improve the recognition of the system when the images are taken in low light environments. This technique has better results over the simple histogram equalization because it can be applied to images that have areas with high and low contrast, and also limits the spread of the noise. Finally, it is also possible to manually tune the contrast and brightness. \Cref{fig:preprocessing} shows the impact of the preprocessing stage in an image which had camera sensor noise (left) and high brightness shifts (right) due to wrinkled plastic.
+To improve the detection of good features and ensure that the system has robust recognition even when the images have considerable noise, a preprocessing step is applied. In a first phase, most of the noise is removed using a bilateral filter\iftoggle{ebib}{ \cite{Tomasi1998}}. This filter was chosen because it preserves the edges of image blobs, which are very valuable structures in the detection of feature points. After the noise is reduced, a \gls{clahe} \iftoggle{ebib}{\cite{Heckbert1994}} is applied to increase the contrast. This can improve the recognition of the system when the images are taken in low light environments. This technique has better results over the simple histogram equalization because it can be applied to images that have areas with high and low contrast, and also limits the spread of the noise. Finally, it is also possible to manually tune the contrast and brightness. \Cref{fig:preprocessing} shows the impact of the preprocessing stage in an image which had camera sensor noise and high brightness shifts due to wrinkled plastic.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.2499\textwidth]{preprocessing/500-500}\hfill
-	\includegraphics[width=.2499\textwidth]{preprocessing/500-500-preprocessed}\hfill
-	\includegraphics[width=.2499\textwidth]{preprocessing/500-500-500}\hfill
-	\includegraphics[width=.2499\textwidth]{preprocessing/500-500-500-preprocessed}
+%	\includegraphics[width=.122\textwidth]{preprocessing/500-500}\hfill
+%	\includegraphics[width=.122\textwidth]{preprocessing/500-500-preprocessed}\hfill
+	\includegraphics[width=.244\textwidth]{preprocessing/500-500-500}\hfill
+	\includegraphics[width=.244\textwidth]{preprocessing/500-500-500-preprocessed}
 	\caption{Impact of preprocessing stage on two pairs of images (original image on the left, preprocessed image on the right)}
 	\label{fig:preprocessing}
 \end{figure}
@@ -47,10 +47,10 @@ The recognition is the most critical phase in the system, in which the provided 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=.2496\textwidth]{image-resolution/500eu-front-very-low}\hfill
-	\includegraphics[width=.2496\textwidth]{image-resolution/500eu_front_currencyDB_veryLowResolution_SIFT-Detector}\hfill
-	\includegraphics[width=.2499\textwidth]{image-resolution/500eu-front-medium}\hfill
-	\includegraphics[width=.2499\textwidth]{image-resolution/500eu_front_currencyDB_mediumResolution_SIFT-Detector}
+	\includegraphics[width=.122\textwidth]{image-resolution/500eu-front-very-low}\hfill
+	\includegraphics[width=.122\textwidth]{image-resolution/500eu_front_currencyDB_veryLowResolution_SIFT-Detector}\hfill
+	\includegraphics[width=.122\textwidth]{image-resolution/500eu-front-medium}\hfill
+	\includegraphics[width=.122\textwidth]{image-resolution/500eu_front_currencyDB_mediumResolution_SIFT-Detector}
 	\caption{Impact of image resolution when computing SIFT keypoints from a very low resolution image (left) to a high resolution image (right) of the hologram of a 500\,\euro{} banknote}
 	\label{fig:banknote-500-front-resolution-difference}
 \end{figure}
@@ -87,7 +87,7 @@ The initial filtering is performed by removing any result which have a contour w
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.37\textwidth]{notes-masks/currency-db-shapes}
+	\includegraphics[width=0.32\textwidth]{notes-masks/currency-db-shapes}
 	\caption{Database of valid instances of banknote shapes}
 	\label{fig:currency-db-shapes}
 \end{figure}

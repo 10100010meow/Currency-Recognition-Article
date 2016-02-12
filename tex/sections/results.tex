@@ -10,9 +10,11 @@ In \cref{fig:recognition-clutter,fig:recognition-perspective-distortion,fig:reco
 \begin{table}[ht]
 	\centering
 	\caption{Testing dataset overview}
-	\begin{tabu} to 0.9\textwidth { X[3,l,m] X[l,m] X[l,m] X[l,m] X[l,m] X[l,m] X[l,m] X[l,m] }
+	\begin{tabu} to 0.47\textwidth { X[4.5,l,m] X[0.6,l,m] X[0.8,l,m] X[0.8,l,m] X[0.8,l,m] X[l,m] X[l,m] X[l,m] }
 		\textbf{Banknote value} & 5\,\euro{} & 10\,\euro{} & 20\,\euro{} & 50\,\euro{} & 100\,\euro{} & 200\,\euro{} & 500\,\euro{}	\\
+		\noalign{\vskip 1mm}
 		\hline
+		\noalign{\vskip 1mm}
 		\textbf{Nº of banknotes}			& 15		 & 12		   & 19			 & 19		   & 6			  & 9			 & 15			\\
 	\end{tabu}
 	\label{tab:dataset-overview}
@@ -22,11 +24,11 @@ In \cref{fig:recognition-clutter,fig:recognition-perspective-distortion,fig:reco
 \begin{table}[ht]
 	\caption{Selection of the configurations with the best recognition results (1 per image)}
 	\centering
-	\begin{tabu} { X[0.7,c,m] X[0.7,c,m] X[c,m] X[c,m] X[c,m] }
+	\begin{tabu} to 0.47\textwidth { X[0.6,c,m] X[0.8,c,m] X[c,m] X[c,m] X[c,m] }
 		\rowfont{\bfseries\itshape} Detector & Descriptor & Images with 1 banknote & Images with 2 banknotes & Images with 3 banknotes \\
-		\noalign{\vskip 2mm} 
+		\noalign{\vskip 2mm}
 		\hline
-		\noalign{\vskip 2mm} 
+		\noalign{\vskip 2mm}
 		SIFT	 & SIFT		  & 37			   & 7				  & 2	\\
 		SURF	 & SURF		  & 24			   & 3				  & 0	\\
 		GFTT	 & SIFT		  & 3			   & 1				  & 0	\\
@@ -40,16 +42,16 @@ In \cref{fig:recognition-clutter,fig:recognition-perspective-distortion,fig:reco
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.498\textwidth]{notes-recognition/5__(5).jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_lowQualityImageDB_globalMatch__inliersMatches__0}\hfill
-	\includegraphics[width=0.498\textwidth]{notes-recognition/10__(9).jpeg___SIFT-Detector_SIFT-Extractor_BF-Matcher_lowQualityImageDB_globalMatch__inliersMatches__0}
+	\includegraphics[width=0.36\textwidth]{notes-recognition/5__(5).jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_lowQualityImageDB_globalMatch__inliersMatches__0}\hfill
+	\includegraphics[width=0.36\textwidth]{notes-recognition/10__(9).jpeg___SIFT-Detector_SIFT-Extractor_BF-Matcher_lowQualityImageDB_globalMatch__inliersMatches__0}
 	\caption{Detection of a banknote in an ideal perspective view with and without background clutter (using SIFT detector, SIFT descriptors and BFMatcher)}
 	\label{fig:recognition-clutter}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.553\textwidth]{notes-recognition/5__(6).jpg___SURF-Detector_SURF-Extractor_BF-Matcher_lowQualityImageDB_globalMatch__inliersMatches__0}\hfill
-	\includegraphics[width=0.447\textwidth]{notes-recognition/100__(4).jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_dynamicQualityImageDB_globalMatch__inliersMatches__0.jpg}
+	\includegraphics[width=0.36\textwidth]{notes-recognition/5__(6).jpg___SURF-Detector_SURF-Extractor_BF-Matcher_lowQualityImageDB_globalMatch__inliersMatches__0}\hfill
+	\includegraphics[width=0.36\textwidth]{notes-recognition/100__(4).jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_dynamicQualityImageDB_globalMatch__inliersMatches__0.jpg}
 	\caption{Detection of banknotes with perspective distortion and folding (left image used SURF detector, SURF descriptors and BFMatcher while the right image used SIFT detector, SIFT descriptors and BFMatcher)}
 	\label{fig:recognition-perspective-distortion}
 \end{figure}
@@ -57,18 +59,18 @@ In \cref{fig:recognition-clutter,fig:recognition-perspective-distortion,fig:reco
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.498\textwidth]{notes-recognition/500.jpg___GFTT-Detector_SIFT-Extractor_BF-Matcher_dynamicQualityImageDB_globalMatch__inliersMatches__0}\hfill
-	\includegraphics[width=0.498\textwidth]{notes-recognition/50__(13).jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_mediumQualityImageDB_globalMatch__inliersMatches__0}
+	\includegraphics[width=0.26\textwidth]{notes-recognition/500.jpg___GFTT-Detector_SIFT-Extractor_BF-Matcher_dynamicQualityImageDB_globalMatch__inliersMatches__0}\hfill
+	\includegraphics[width=0.26\textwidth]{notes-recognition/50__(13).jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_mediumQualityImageDB_globalMatch__inliersMatches__0}
 	\caption{Detection of partially occluded banknotes (left image used GFTT detector, SIFT descriptors and BFMatcher while the right image used SIFT detector, SIFT descriptors and BFMatcher)}
 	\label{fig:recognition-partially-occluded-banknotes}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.35\textwidth]{notes-recognition/10-20-50.jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_dynamicQualityImageDB_globalMatch}
-	\includegraphics[width=0.545\textwidth]{notes-recognition/10-20-50.jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_dynamicQualityImageDB_globalMatch__inliersMatches__1}
-	\includegraphics[width=0.447\textwidth]{notes-recognition/10-20-50.jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_dynamicQualityImageDB_globalMatch__inliersMatches__2}
-	\includegraphics[width=0.447\textwidth]{notes-recognition/10-20-50.jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_dynamicQualityImageDB_globalMatch__inliersMatches__0}
+	\includegraphics[width=0.26\textwidth]{notes-recognition/10-20-50.jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_dynamicQualityImageDB_globalMatch}
+	\includegraphics[width=0.26\textwidth]{notes-recognition/10-20-50.jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_dynamicQualityImageDB_globalMatch__inliersMatches__1}
+	\includegraphics[width=0.26\textwidth]{notes-recognition/10-20-50.jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_dynamicQualityImageDB_globalMatch__inliersMatches__2}
+	\includegraphics[width=0.26\textwidth]{notes-recognition/10-20-50.jpg___SIFT-Detector_SIFT-Extractor_BF-Matcher_dynamicQualityImageDB_globalMatch__inliersMatches__0}
 	\caption{Detection of overlapping banknotes (using SIFT detector, SIFT descriptors and BFMatcher)}
 	\label{fig:recognition-overlapping-banknotes}
 \end{figure}
