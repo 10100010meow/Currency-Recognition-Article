@@ -1,6 +1,6 @@
 \section{Implementation}\label{sec:implementation}
 
-The following sections present the main processing stages of the implemented banknote recognition system (overview shown in \cref{fig:system-overview}). The C++ source code along with the complete results are available at \footnote{\url{https://github.com/user/repository}}. To speed up development, the \gls{opencv} library was used.
+The following sections present the main processing stages of the implemented banknote recognition system (overview shown in \cref{fig:system-overview}). The C++ source code along with the complete results are available at \footnote{\url{https://github.com/carlosmccosta/Currency-Recognition}}. To speed up development, the \gls{opencv} library was used.
 
 \begin{figure}[!ht]
 	\centering
@@ -12,7 +12,7 @@ The following sections present the main processing stages of the implemented ban
 
 \subsection{Reference image database setup}
 
-In order for the system to be able to recognize the target banknotes, a database of valid instances must be computed. This database contains the descriptors associated with the keypoints for each preprocessed banknote (from both sides). To improve the detection of the relevant parts of the banknotes and to avoid the usage of sections that are similar across several banknotes, the keypoint detection algorithm is only applied inside the manually created masks associated with each banknote. Only relevant parts such as the banknote number and unique textures or patterns are included in the banknotes masks (only the white areas shown in \cref{fig:banknote-feature-detection-mask-500-front} will be used to compute the keypoints of a 500\,\euro{} banknote).
+In order to be able to recognize the target banknotes, a database of valid instances must be computed. This database contains the descriptors associated with the keypoints for each preprocessed banknote (from both sides). To improve the detection of the relevant parts of the banknotes and to avoid the usage of sections that are similar across several banknotes, the keypoint detection algorithm is only applied inside the manually created masks associated with each banknote. Only relevant parts such as the banknote number and unique textures or patterns are included in the banknotes masks (only the white areas shown in \cref{fig:banknote-feature-detection-mask-500-front} will be used to compute the keypoints of a 500\,\euro{} banknote).
 
 
 \begin{figure}[H]
@@ -36,7 +36,7 @@ To improve the detection of good features and ensure that the system has robust 
 %	\includegraphics[width=.122\textwidth]{preprocessing/500-500-preprocessed}\hfill
 	\includegraphics[width=.244\textwidth]{preprocessing/500-500-500}\hfill
 	\includegraphics[width=.244\textwidth]{preprocessing/500-500-500-preprocessed}
-	\caption{Impact of preprocessing stage on two pairs of images (original image on the left, preprocessed image on the right)}
+	\caption{Impact of preprocessing stage (original image on the left, preprocessed image on the right)}
 	\label{fig:preprocessing}
 \end{figure}
 
@@ -57,12 +57,12 @@ The recognition is the most critical phase in the system, in which the provided 
 
 
 \subsubsection{Feature detection}\label{sec:feature-detection}
-Feature detection is the initial recognition step in which interesting keypoints for matching are identified in the image. These keypoints are normally selected by analyzing the edges, corners, blobs or even ridges. Also, the keypoints provide a condensed representation of the image, which significantly speeds up matching (compared to bitmap or blob matching). To allow fine tuning of the system, the implementation supports the usage of one of several feature detection algorithm, namely, \gls{sift} \cite{Lowe2004}, \gls{surf} \cite{Bay2006}, \gls{gftt} \cite{Shi1994}, \gls{fast} \cite{Rosten2006}, \gls{orb} \cite{Rublee2011}, \gls{brisk} \cite{Leutenegger2011}, STAR \cite{Agrawal2008} and \gls{mser} \cite{Matas2004}.
+Feature detection is the initial recognition step in which interesting keypoints for matching are identified in the image. These keypoints are normally selected by analyzing the edges, corners, blobs or even ridges. Also, the keypoints provide a condensed representation of the image, which significantly speeds up matching (compared to bitmap or blob matching). To allow fine tuning of the system, the implementation supports the usage of one of several feature detection algorithm, namely, \gls{sift}\iftoggle{ebib}{ \cite{Lowe2004}}, \gls{surf}\iftoggle{ebib}{ \cite{Bay2006}}, \gls{gftt}\iftoggle{ebib}{ \cite{Shi1994}}, \gls{fast}\iftoggle{ebib}{ \cite{Rosten2006}}, \gls{orb}\iftoggle{ebib}{ \cite{Rublee2011}}, \gls{brisk}\iftoggle{ebib}{ \cite{Leutenegger2011}}, STAR\iftoggle{ebib}{ \cite{Agrawal2008}} and \gls{mser}\iftoggle{ebib}{ \cite{Matas2004}}.
 
 
 \subsubsection{Keypoint descriptor extraction}\label{sec:keypoint-descriptor-extraction}
 
-The feature description step associates to each keypoint a description of its surroundings, in order to allow the matching of keypoints. This normally involves the computation of n-jets or local histograms and the final result is a vector in an n-dimensional space characterizing each keypoint. In order to detect instances with different perspective views, these descriptors must be scale and rotation invariant. Also, they should tolerate different lightning conditions. There are several algorithms that can accomplish this task, and as such, they were included in the implementation and can be selected to fine tuning the system. It was included the \gls{sift} \cite{Lowe2004}, \gls{surf} \cite{Bay2006}, \gls{freak} \cite{Alahi2012}, \gls{brief} \cite{Calonder2010}, \gls{orb} \cite{Rublee2011} and \gls{brisk} \cite{Leutenegger2011} feature descriptors.
+The feature description step associates to each keypoint a description of its surroundings, in order to allow the matching of keypoints. This normally involves the computation of n-jets or local histograms and the final result is a vector in an n-dimensional space characterizing each keypoint. In order to detect instances with different perspective views, these descriptors must be scale and rotation invariant. Also, they should tolerate different lightning conditions. There are several algorithms that can accomplish this task, and as such, they were included in the implementation and can be selected to fine tuning the system. It was included the \gls{sift}\iftoggle{ebib}{ \cite{Lowe2004}}, \gls{surf}\iftoggle{ebib}{ \cite{Bay2006}}, \gls{freak}\iftoggle{ebib}{ \cite{Alahi2012}}, \gls{brief}\iftoggle{ebib}{ \cite{Calonder2010}}, \gls{orb}\iftoggle{ebib}{ \cite{Rublee2011}} and \gls{brisk}\iftoggle{ebib}{ \cite{Leutenegger2011}} feature descriptors.
 
 
 \subsubsection{Descriptors matching}\label{sec:descriptors-matching}
@@ -81,7 +81,7 @@ Having the inliers, two approaches can be used to decide if a valid banknote was
 
 \subsubsection{Shape analysis}\label{sec:shape-analysis}
 
-When a banknote matching is considered valid, it undergoes a post-processing step in which its contour shape is analyzed. This step is crucial to avoid the multiple detection of the same banknote when it is wrinkled or folded. Also, it removes any recognition that have a contour shape that can not be associated with a banknote.
+When a banknote recognition is considered valid, it undergoes a post-processing step in which its contour shape is analyzed. This step is crucial to avoid the multiple detection of the same banknote when it is wrinkled or folded. Also, it removes any recognition that have a contour shape that can not be associated with a banknote.
 
 The initial filtering is performed by removing any result which have a contour with a very low area in relation to the whole image. In a second step, any result without a convex contour is also removed. This is applied because a banknote has a convex quadrilateral shape. It will never have a concave shape, even when it is folded. The reason for this is that the contour is not computed from the banknote borders. Instead a homography is used to map the 4 corners of the reference image to the positions in the image in which the banknotes reside. A final step removes any result that has a contour with a circularity or aspect ratio outside the acceptable bounds. These bounds are retrieved from a database of valid shapes (shown in \cref{fig:currency-db-shapes}).
 
